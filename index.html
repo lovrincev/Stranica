@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Random Name Button</title>
+  <title>Izvuci Citat</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,7 +12,11 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
+      background-image: url('pozadina.jpg'); /* Background Image */
+      background-size: contain; /* Ensure the image covers the entire body */
+      background-position: center center; /* Center the background image */
+      background-attachment: fixed; /* Make the background stay fixed during scrolling */
+      background-repeat: no-repeat;
     }
     .container {
       text-align: center;
@@ -35,13 +39,17 @@
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 20px;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+      color: white;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div id="word-display">Klikni botun</div>
-    <button onclick="changeWord()">Klikni me!</button>
+    <div id="word-display">Dođi Duše Sveti, po moćnom zagovoru Bezgrešnog srca Marije, svoje Preljubljene zaručnice!</div>
+    <button onclick="changeWord()">Izvuci citat</button>
   </div>
 
   <!-- Embedded JSON Data -->
@@ -64,7 +72,7 @@
     // Function to change the word displayed
     function changeWord() {
       if (items.length === 0) {
-        document.getElementById('word-display').innerText = "No items available!";
+        document.getElementById('word-display').innerText = "Trenutno nema citata...";
       } else {
         const randomItem = items[Math.floor(Math.random() * items.length)];
         document.getElementById('word-display').innerText = randomItem;
