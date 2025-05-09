@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Name Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .container {
+      text-align: center;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #word-display {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="word-display">Klikni botun</div>
+    <button onclick="changeWord()">Klikni me!</button>
+  </div>
+
+  <!-- Embedded JSON Data -->
+  <script id="json-data" type="application/json">
+    {
+      "items": [
+        "“Ne boj se, jer ja sam s tobom; ne obaziri se, jer ja sam tvoj Bog. Ojačat ću te, pomagat ću ti, pridržavat ću te svojom desnicom.” – sveto pismo (Izaija 41:10)",
+        "“Ti si stvoren na Božju sliku. Nisi sam, jer je On uvijek uz tebe.” – nepoznat autor",
+        "“Neka tvoja vjera bude jača od tvojih strahova.” – sveti Ivan Pavao II",
+        "“U najvećim kušnjama, pronađi snagu u molitvi. Bog te čuje i odgovara.” – sveta Majka Terezija"
+      ]
+    }
+  </script>
+
+  <script>
+    // Function to parse the embedded JSON
+    const jsonData = JSON.parse(document.getElementById('json-data').textContent);
+    const items = jsonData.items;
+
+    // Function to change the word displayed
+    function changeWord() {
+      if (items.length === 0) {
+        document.getElementById('word-display').innerText = "No items available!";
+      } else {
+        const randomItem = items[Math.floor(Math.random() * items.length)];
+        document.getElementById('word-display').innerText = randomItem;
+      }
+    }
+  </script>
+</body>
+</html>
