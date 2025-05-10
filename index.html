@@ -80,8 +80,8 @@
   <script>
     function showRandomCitat() {
       // Hide all citats
-      const citats = document.querySelectorAll('.citat');
-      const poruka = document.querySelectorAll('.citat:not(.poruka');
+      const citats = document.querySelectorAll('.citat:not(.poruka)');
+      const poruka = document.querySelectorAll('.citat');
       citats.forEach(div => div.style.display = 'none');
       poruka.forEach(div => div.style.display = 'none');
       // Pick one at random and show it
