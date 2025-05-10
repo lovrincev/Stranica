@@ -1,3 +1,4 @@
+```
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -12,10 +13,10 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-image: url('pozadina.jpg'); /* Background Image */
-      background-size: contain; /* Ensure the image covers the entire body */
-      background-position: center center; /* Center the background image */
-      background-attachment: fixed; /* Make the background stay fixed during scrolling */
+      background-image: url('pozadina.jpg');
+      background-size: contain;
+      background-position: center center;
+      background-attachment: fixed;
       background-repeat: no-repeat;
     }
     .container {
@@ -35,52 +36,58 @@
     button:hover {
       background-color: #2980b9;
     }
-    #word-display {
+    .citat {
+      display: none;
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 20px;
       margin: 10px;
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+      background-color: rgba(0, 0, 0, 0.6);
       color: white;
       border-radius: 10px;
+    }
+    .poruka {
+      display: block;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div id="word-display">Dođi Duše Sveti, po moćnom zagovoru Bezgrešnog srca Marije, svoje Preljubljene zaručnice!</div>
-    <button onclick="changeWord()">Izvuci citat</button>
+    <!-- Each quote is in its own hidden div below -->
+    <div id="citati">
+      <div class="citat poruka">
+        Dođi Duše Sveti, po moćnom zagovoru Bezgrešnog srca Marije, svoje Preljubljene zaručnice!
+      </div>
+      <div class="citat">
+        “Ne boj se, jer ja sam s tobom; ne obaziri se, jer ja sam tvoj Bog. Ojačat ću te, pomagat ću ti, pridržavat ću te svojom desnicom.” – sveto pismo (Izaija 41:10)
+      </div>
+      <div class="citat">
+        “Ti si stvoren na Božju sliku. Nisi sam, jer je On uvijek uz tebe.” – nepoznat autor
+      </div>
+      <div class="citat">
+        “Neka tvoja vjera bude jača od tvojih strahova.” – sveti Ivan Pavao II
+      </div>
+      <div class="citat">
+        “U najvećim kušnjama, pronađi snagu u molitvi. Bog te čuje i odgovara." – sveta Majka Terezija
+      </div>
+    </div>
+    <button onclick="showRandomCitat()">Izvuci citat</button>
   </div>
-
-  <!-- Embedded JSON Data -->
-  <script id="json-data" type="application/json">
-    {
-      "items": [
-        "“Ne boj se, jer ja sam s tobom; ne obaziri se, jer ja sam tvoj Bog. Ojačat ću te, pomagat ću ti, pridržavat ću te svojom desnicom.” – sveto pismo (Izaija 41:10)",
-        "“Ti si stvoren na Božju sliku. Nisi sam, jer je On uvijek uz tebe.” – nepoznat autor",
-        "“Neka tvoja vjera bude jača od tvojih strahova.” – sveti Ivan Pavao II",
-        "“U najvećim kušnjama, pronađi snagu u molitvi. Bog te čuje i odgovara.” – sveta Majka Terezija",
-    "“Ne boj se, jer ja sam s tobom; ne obaziri se, jer ja sam tvoj Bog. Ojačat ću te, pomagat ću ti, pridržavat ću te svojom desnicom.” – sveto pismo (Izaija 41:10)",
-        "\Nebo se bori za Tebe. Budi ustrajan, i vjeruj svome Bogu.\" - Ivan Lovrinčević"
-      ]
-    }
-  </script>
-
   <script>
-    // Function to parse the embedded JSON
-    const jsonData = JSON.parse(document.getElementById('json-data').textContent);
-    const items = jsonData.items;
-
-    // Function to change the word displayed
-    function changeWord() {
-      if (items.length === 0) {
-        document.getElementById('word-display').innerText = "Trenutno nema citata...";
-      } else {
-        const randomItem = items[Math.floor(Math.random() * items.length)];
-        document.getElementById('word-display').innerText = randomItem;
+    function showRandomCitat() {
+      // Hide all citats
+      const citats = document.querySelectorAll('.citat');
+      const poruka = document.querySelectorAll('.poruka');
+      citats.forEach(div => div.style.display = 'none');
+      poruka.forEach(div => div.style.display = 'none');
+      // Pick one at random and show it
+      if (citats.length > 0) {
+        const randomIndex = Math.floor(Math.random() * citats.length);
+        citats[randomIndex].style.display = 'block';
       }
     }
   </script>
 </body>
 </html>
+```
